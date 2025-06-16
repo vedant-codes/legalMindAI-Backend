@@ -90,6 +90,29 @@ router.post("/qna", async (req, res) => {
   }
 });
 
+router.post("/negotiation", async (req, res) => {
+  
+  const schema = req.body.schema;
+  const tone = req.body.tone;
+
+  try {
+    const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+
+    const result = await model.generateContent(
+      `On the basis of the contract's schema: ${JSON.stringify(schema)},
+      Create a negotiation email (email format so add newlines wherever required) for contract as per the tone provided : ${tone}
+      
+      `
+    );
+
+    let output = result.response.candidates[0].content.parts[0].text.trim();
+    res.json({ result: output });
+
+  } catch (error) {
+    res.status(500).json({ error: "Failed", details: error.message });
+  }
+});
+
 export default router
 
 
