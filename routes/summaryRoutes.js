@@ -43,7 +43,10 @@ router.post("/generate-summary", async (req, res) => {
       - dates - object{ date(yyyy-mm-dd),desc}
       - financialTerms - object (amount,date(yyyy-mm-dd),desc)
       - obligations - object{name,role}
-      - riskyClauses - object {clause,description,risk(low/medium/high onlyy)} 
+      - riskyClauses - object {clause,description,risk(low/medium/high onlyy)}
+      - riskScore (integer from 0 to 100)
+      - type (NDA/Service Agreement/Licensing/Employment)
+
       
       Respond strictly in valid JSON (without explanations or extra comments).
       
