@@ -39,11 +39,11 @@ router.post("/generate-summary", async (req, res) => {
     const result = await model.generateContent(
       `Read the following legal contract text and extract the following:
       - A simple summary in plain English. (string)
-      - parties - object{name,role}
-      - dates - object{ date(yyyy-mm-dd),desc}
-      - financialTerms - object (amount,date(yyyy-mm-dd),desc)
-      - obligations - object{name,role}
-      - riskyClauses - object {clause,description,risk(low/medium/high onlyy)}
+      - parties - array of object{name,role}
+      - dates - array of object{ date(yyyy-mm-dd),desc}
+      - financialTerms - array of object (amount,date(yyyy-mm-dd),desc)
+      - obligations - array of object{name,role}
+      - riskyClauses - array of object {clause,description,risk(low/medium/high onlyy)}
       - riskScore (integer from 0 to 100)
       - type (NDA/Service Agreement/Licensing/Employment)
 
